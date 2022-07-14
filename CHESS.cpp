@@ -12,17 +12,17 @@ void init() {
         for (int j = 0; j <= chess - 1; j++) {
             a[i][j] = 0;
         }
-};
+}
 
 void print_ans() {
     for (int i = 0; i <= chess - 1; i++) {
         for (int j = 0; j <= chess - 1; j++) {
-            cout << a[i][j] << " ";    
+            cout << a[i][j] << char(32);    
         }
         cout << endl;
     }
     cout << endl;
-};
+}
 
 void move(int n, int x, int y) {
     for (int i = 0; i <= 7; i++) {
