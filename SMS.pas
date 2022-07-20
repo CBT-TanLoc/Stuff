@@ -1,6 +1,6 @@
-var i, cost, x : integer;
-    s: string;
-    Button0: SET OF char;
+var i, n, cost: integer;
+    cost_1, cost_2, cost_3: SET OF char;
+    a: array[1..1000] of char;
     f1, f2: text;
 
 BEGIN
@@ -8,26 +8,23 @@ BEGIN
  assign(f1, 'SMS.INP'); reset(f1);
  assign(f2, 'SMS.OUT'); rewrite(f2);
 
- Button0 := ['.',',','!'];
+ cost_1 := ['a', 'd', 'g', 'j', 'm', 'p', 's', 'v', 'y', '.', #32];
+ cost_2 := ['b', 'e', 'h', 'k', 'n', 'q', 't', 'w', 'z', ','];
+ cost_3 := ['c', 'f', 'i', 'l', 'o', 'r', 'u', 'x', '!'];
 
- readln(f1, s);
-
- for i := 1 to length(s) do
+ while not eof(f1) do
  begin
-  if s[i] = ' ' then x := 1 else
-   if s[i] IN Button0 then
-   begin
-    case s[i] of
-     '.': x := 1;
-     ',': x := 2;
-     '!': x := 3;
-    end;
-   end else
-   begin
-    x := (ord(s[i]) - 96) mod 3;
-    if x = 0 then x := 3;
-   end;
-  cost := cost + x;
+  inc(i);
+  read(f1, a[i]);
+ end;
+ n := i;
+
+ cost := 0;
+ for i := 1 to n do
+ begin
+  if a[i] IN cost_1 then cost := cost + 1
+   else if a[i] IN cost_2 then cost := cost + 2
+    else cost := cost + 3;
  end;
 
  writeln(f2, cost);

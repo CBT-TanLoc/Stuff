@@ -1,5 +1,5 @@
-var i, count: integer;
-    n, a, b: integer;
+var i, count: int64;
+    n, a, b: int64;
     sn, sa, sb, si: string;
     f1, f2: text;
 
@@ -17,10 +17,12 @@ BEGIN
  str(a, sa);
  str(b, sb);
 
- for i := a to b do
+ i := a;
+ while i <= b do
  begin
   str(i, si);
   if pos(sn, si) <> 0 then inc(count);
+  inc(i);
  end;
 
  writeln(f2, count);
